@@ -1,14 +1,19 @@
 # drone-on-coreos-config
 drone on coreos config management files
 * baseed on official page https://coreos.com/blog/managing-coreos-with-ansible.html
-* using ansible(need ansible setup on local.)
+* using terraform(need terrafrom on local.)
+* using ansible(need ansible on local.)
 
 ## usage 
 * set vars
 ```
 make usage
 ```
-* make
+* create instance
+```
+make create
+```
+* setup drone
 ```
 make setup && make install
 ```
