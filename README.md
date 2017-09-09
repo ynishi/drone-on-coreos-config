@@ -1,6 +1,8 @@
 # drone-on-coreos-config
 drone on coreos config management files
-* baseed on official page https://coreos.com/blog/managing-coreos-with-ansible.html
+* official pages
+  * coreos https://coreos.com/blog/managing-coreos-with-ansible.html
+  * drone http://docs.drone.io/installation/ 
 * using terraform(need terrafrom on local.)
 * using ansible(need ansible on local.)
 
