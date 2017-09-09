@@ -17,3 +17,6 @@ make setup && make install
 cd ansible
 ansible-playbook -i drone-servers.yml playbook.yml --extra-vars="drone_secret=abc"
 ```
+
+## LICENSE
+MIT, see LICENSE.(c) 2017, Yutaka Nishimura
