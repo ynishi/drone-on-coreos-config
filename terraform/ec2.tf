@@ -14,7 +14,7 @@ provider "aws" {
 }
 
 resource "aws_instance" "drone-core" {
-    ami           = "ami-f771b591"
+    ami           = "ami-f771b591" # coreos stable 1465.7.0 https://coreos.com/os/docs/latest/booting-on-ec2.html
     instance_type = "t2.micro"
     monitoring    = true
     tags {
