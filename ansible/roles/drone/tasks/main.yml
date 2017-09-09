@@ -1,0 +1,30 @@
+- name: be sure /opt/bin exists
+  file: path=/opt/bin state=directory owner=root group=root mode=0755
+
+- name: be sure docker-compose downloaded
+  get_url: url="https://github.com/docker/compose/releases/download/{{ docker_compose_version }}/docker-compose-{{ docker_compose_arch }}" dest=/opt/bin/docker-compose force=yes
+
+- name: be sure +x docker-compose
+  file: dest=/opt/bin/docker-compose mode=a+x
+
+- name: be sure drone dir exists
+  file: path=/home/core/drone state=directory owner=core group=core mode=0755
+
+- name: be sure copy docker-compose.yml
+  template: src=docker-compose.yml.j2 dest=/home/core/drone/docker-compose.yml owner=core group=core
+
+- name: be sure drone's docker-compose downed
+  command: docker-compose down
+  args:
+    chdir: /home/core/drone
+  ignore_errors: yes
+
+- name: be sure drone's docker-compose upped
+  environment:
+    DRONE_SECRET: "{{ drone_secret }}"
+    DRONE_HOST: "{{ drone_host }}"
+    DRONE_GITHUB_CLIENT: "{{ drone_github_client }}"
+    DRONE_GITHUB_SECRET: "{{ drone_github_secret }}"
+  command: docker-compose up -d
+  args:
+    chdir: /home/core/drone

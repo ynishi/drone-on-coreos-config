@@ -1,0 +1,4 @@
+- hosts: drone-servers
+  gather_facts: False
+  roles:
+    - defunctzombie.coreos-bootstrap

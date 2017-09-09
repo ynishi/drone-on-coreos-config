@@ -1,0 +1,5 @@
+- name: setup drone on coreos 
+  hosts: drone-servers
+  become: yes
+  roles:
+    - drone
